@@ -24,7 +24,7 @@ local kp =
             },
           },
         },
-        dashboards+:: {
+        dashboards: {
           'capz-e2e-load.json': (import 'dashboards/capz-e2e-load.json'),
           'capz-e2e.json': (import 'dashboards/capz-e2e.json'),
           'clusterloader2.json': (import 'dashboards/clusterloader2.json'),
