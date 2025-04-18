@@ -1,0 +1,217 @@
+{
+  "annotations": {
+    "list": [
+      {
+        "builtIn": 1,
+        "datasource": {
+          "type": "grafana",
+          "uid": "-- Grafana --"
+        },
+        "enable": true,
+        "hide": true,
+        "iconColor": "rgba(0, 211, 255, 1)",
+        "name": "Annotations & Alerts",
+        "type": "dashboard"
+      }
+    ]
+  },
+  "editable": true,
+  "fiscalYearStartMonth": 0,
+  "graphTooltip": 0,
+  "id": 29,
+  "links": [],
+  "panels": [
+    {
+      "datasource": {
+        "uid": "P1809F7CD0C75ACF3"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "fillOpacity": 80,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineWidth": 1,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "fieldMinMax": false,
+          "mappings": [],
+          "thresholds": {
+            "mode": "percentage",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 0,
+        "y": 0
+      },
+      "id": 1,
+      "options": {
+        "barRadius": 0,
+        "barWidth": 0.97,
+        "fullHighlight": false,
+        "groupWidth": 0.7,
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "orientation": "auto",
+        "showValue": "auto",
+        "stacking": "none",
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        },
+        "xTickLabelRotation": -45,
+        "xTickLabelSpacing": 0
+      },
+      "pluginVersion": "11.4.0",
+      "targets": [
+        {
+          "disableTextWrap": false,
+          "editorMode": "builder",
+          "expr": "capz_PodStartupLatency_CreatePhasePodStartupLatency_pod_startup{perc=\"Perc50\"}",
+          "format": "table",
+          "fullMetaSearch": false,
+          "includeNullMetadata": true,
+          "legendFormat": "{{perc}}",
+          "range": true,
+          "refId": "Perc50",
+          "useBackend": false
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "P1809F7CD0C75ACF3"
+          },
+          "disableTextWrap": false,
+          "editorMode": "builder",
+          "expr": "capz_PodStartupLatency_CreatePhasePodStartupLatency_pod_startup{perc=\"Perc90\"}",
+          "format": "table",
+          "fullMetaSearch": false,
+          "hide": false,
+          "includeNullMetadata": true,
+          "instant": false,
+          "legendFormat": "__auto",
+          "range": true,
+          "refId": "Perc90",
+          "useBackend": false
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "P1809F7CD0C75ACF3"
+          },
+          "disableTextWrap": false,
+          "editorMode": "builder",
+          "expr": "capz_PodStartupLatency_CreatePhasePodStartupLatency_pod_startup{perc=\"Perc99\"}",
+          "format": "table",
+          "fullMetaSearch": false,
+          "hide": false,
+          "includeNullMetadata": true,
+          "instant": false,
+          "legendFormat": "__auto",
+          "range": true,
+          "refId": "Perc99",
+          "useBackend": false
+        }
+      ],
+      "title": "Panel Title",
+      "transformations": [
+        {
+          "id": "joinByField",
+          "options": {
+            "byField": "buildID",
+            "mode": "outerTabular"
+          }
+        },
+        {
+          "id": "groupBy",
+          "options": {
+            "fields": {
+              "Time": {
+                "aggregations": [
+                  "firstNotNull"
+                ],
+                "operation": "aggregate"
+              },
+              "Value #Perc50": {
+                "aggregations": [
+                  "firstNotNull"
+                ],
+                "operation": "aggregate"
+              },
+              "Value #Perc90": {
+                "aggregations": [
+                  "firstNotNull"
+                ],
+                "operation": "aggregate"
+              },
+              "Value #Perc99": {
+                "aggregations": [
+                  "firstNotNull"
+                ],
+                "operation": "aggregate"
+              },
+              "buildID": {
+                "aggregations": [],
+                "operation": "groupby"
+              },
+              "cluster": {
+                "aggregations": [
+                  "firstNotNull"
+                ],
+                "operation": "aggregate"
+              }
+            }
+          }
+        }
+      ],
+      "type": "barchart"
+    }
+  ],
+  "preload": false,
+  "schemaVersion": 40,
+  "tags": [],
+  "templating": {
+    "list": []
+  },
+  "time": {
+    "from": "now-3h",
+    "to": "now"
+  },
+  "timepicker": {},
+  "timezone": "UTC",
+  "title": "CL2 Dashboard",
+  "uid": "eeh536ob3kglcd",
+  "version": 3,
+  "weekStart": ""
+}
