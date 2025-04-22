@@ -22,6 +22,9 @@ local kp =
               domain: "capz-monitoring.org/",
               root_url: "https://capz-monitoring.org/",
             },
+            dashboards: {
+              default_home_dashboard_path: "/grafana-dashboard-definitions/0/capz-e2e-load/capz-e2e-load.json",
+            },
           },
         },
         dashboards: {
